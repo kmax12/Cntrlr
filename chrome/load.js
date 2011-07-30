@@ -3,5 +3,4 @@ function(){l(b)},o=b==="css",q=[],d,i,e,r;c||w();if(a)if(a=typeof a==="string"?[
 e.setAttribute("charset","utf-8"),c.ie&&!o?e.onreadystatechange=function(){if(/loaded|complete/.test(e.readyState))e.onreadystatechange=null,j()}:o&&(c.gecko||c.webkit)?c.webkit?(r.urls[d]=e.href,t()):(e.innerHTML='@import "'+g+'";',u(e)):e.onload=e.onerror=j,q.push(e);d=0;for(i=q.length;d<i;++d)s.appendChild(q[d])}}function u(b){var a;try{a=!!b.sheet.cssRules}catch(c){h+=1;h<200?setTimeout(function(){u(b)},50):a&&l("css");return}l("css")}function t(){var b=m.css,a;if(b){for(a=v.length;--a>=0;)if(v[a].href===
 b.urls[0]){l("css");break}h+=1;b&&(h<200?setTimeout(t,50):l("css"))}}var c,s,m={},h=0,n={css:[],js:[]},v=k.styleSheets;return{css:function(b,a,c,f){j("css",b,a,c,f)},js:function(b,a,c,f){j("js",b,a,c,f)}}}(this.document);
 
-LazyLoad.js(['https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', 'http://localhost:8082/nowjs/now.js', 'http://localhost:8082/static/desktop.js'], function () {
-});
+setTimeout("LazyLoad.js(['https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', 'http://localhost:8082/nowjs/now.js', 'http://localhost:8082/static/desktop.js'], function () { });", 1000);

@@ -1,7 +1,9 @@
 <script>
 	var cntrlrCrhomeEnabled = false;
 	chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-		renderJS();
+		if(changeInfo.status == "loading"){
+			renderJS();
+		}
 	});
 	
 	chrome.browserAction.onClicked.addListener(function(tab) {

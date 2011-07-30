@@ -118,13 +118,21 @@
 	background: #444;
 }
 
-.lower-button.disabled {
+.lower-button.disabled, #draw.disabled {
 	background: #cacaca;
 	color: black;
 }
 
 #draw, #url {
 	width: 17%;
+}
+
+#draw {
+	background: #111 url(/static/pencil-light.png) center center no-repeat;
+	text-indent: -9999px;
+}
+#draw.disabled {
+	background: #cacaca url(/static/pencil-dark.png) center center no-repeat;
 }
 
 /*#draw.disabled {
