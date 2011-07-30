@@ -72,3 +72,20 @@ everyone.now.sendEnableCanvas = function () {
 everyone.now.sendDisableCanvas = function () {
     nowjs.getGroup(this.now.cntrlr).now.receiveDisableCanvas();
 }
+
+everyone.now.sendButtonCall = function (n) {
+    nowjs.getGroup(this.now.cntrlr).now.receiveButtonCall(n);
+}
+
+everyone.now.sendButtonSetup = function (n) {
+	if (n==1) {
+		elem1 = null;
+	} else if (n==2) {
+		elem2 = null;
+	}
+    nowjs.getGroup(this.now.cntrlr).now.receiveButtonSetup(n);
+}
+
+everyone.now.sendButtonSuccess = function (n) {
+    nowjs.getGroup(this.now.cntrlr).now.receiveButtonSuccess(n);
+}

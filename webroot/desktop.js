@@ -497,7 +497,12 @@ var scroller,oldx,oldy,newx,newy,
 	isDragging = false,
 	cntrlrClickCalled = false,
 	cntrlrCanvasContext,
-	cntrlrCanvasEnabled = false;
+	cntrlrCanvasEnabled = false,
+	set1 = false,
+	set2 = false,
+	elem1 = null,
+	elem2 = null;
+	
 function cntrlrSimulateEvent(element, type) {
     // Check for createEventObject
     if(document.createEventObject){
@@ -678,7 +683,21 @@ $(function () {
 				$("#cntrlr-cursor").hide();
 				elem = document.elementFromPoint(parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10), parseInt($("#cntrlr-cursor").css('top').replace('px', ''), 10));
 				if(elem != null) {
-					if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
+					if (set1 || set2) {
+						if (set1) {
+							set1 = false;
+							elem1 = elem;
+							console.log(elem1)
+							console.log(elem2)
+							now.sendButtonSuccess(1);
+						} else if (set2) {
+							set2 = false;
+							elem2 = elem;
+							console.log(elem1)
+							console.log(elem2)
+							now.sendButtonSuccess(2);
+						}
+					} else if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
 						$(elem).click();
 						$(elem).focus();
 					} else {
@@ -702,6 +721,30 @@ $(function () {
 		now.receiveDisableCanvas = function () {
 			$("#cntrlr-canvas").hide();
 			cntrlrCanvasEnabled = false;
+		}
+		
+		now.receiveButtonCall = function (num) {
+			console.log('button-call')
+			if (num == 1) {
+				cntrlrSimulateEvent(elem1,'click')
+			} else if (num == 2) {
+				cntrlrSimulateEvent(elem2,'click')
+			}
+		}
+		
+		now.receiveButtonSetup = function (num) {
+			console.log('button-setup')
+			if (num ==1) {
+				set1 = true;
+				set2 = false;
+			} else if (num == 2) {
+				set1 = false;
+				set2 = true;
+			}
+		}
+		
+		now.receiveButtonSuccess = function (num) {
+			console.log('button' + num + "sucess") 
 		}
 	});
 	scroller = new Scroller();

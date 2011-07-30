@@ -9,22 +9,11 @@ $(window).ready( function () {
 		sizeFactor = 942/$(document).height();
 	})
 	
-	new MBP.fastButton(document.getElementById('draw'), function(e) {
-    	if ($('#draw').hasClass('disabled')) {
-    		$('#draw').toggleClass('disabled');
-    		now.sendEnableCanvas()
-    	} else {
-    		$('#draw').toggleClass('disabled');
-    		now.sendDisableCanvas()
-    	}     
-    });
-    
-    new MBP.fastButton(document.getElementById('button-l'), function(e) {
-    	//now.send
-    });
+	
 })
+now.cntrlr = 1;
 now.ready(function(){
-	now.cntrlr = 1;
+	
 	
     var vert = document.getElementById('vert-scroll');
   
@@ -38,8 +27,6 @@ now.ready(function(){
 			startx = oldx = e.clientX
     		starty = oldy = e.clientY
 		}
-    	
-    	console.log('start')
     	e.preventDefault();
 	};
 	
@@ -124,7 +111,6 @@ now.ready(function(){
 	};
 
     trackpad.onmouseup =  trackpad.ontouchend  = function (e) {
-    	console.log(click)
     	if (click) {
 	    	trackpad.className = "clicked control-area";
 	    	setTimeout(function(){
@@ -135,6 +121,36 @@ now.ready(function(){
     	
     	e.preventDefault();
 	};
+	
+	new MBP.fastButton(document.getElementById('draw'), function(e) {
+    	if ($('#draw').hasClass('disabled')) {
+    		$('#draw').toggleClass('disabled');
+    		now.sendEnableCanvas()
+    	} else {
+    		$('#draw').toggleClass('disabled');
+    		now.sendDisableCanvas()
+    	}     
+    });
+    
+    new MBP.fastButton(document.getElementById('button-1'), function(e) {
+    	if ($('#button-1').attr('setup') == "true") {
+    		now.sendButtonCall(1);
+    	} else {
+    		now.sendButtonSetup(1);
+    		//$('#button-1').attr('setup', true);
+    	}
+    	
+    });
+    
+    new MBP.fastButton(document.getElementById('button-2'), function(e) {
+    	if ($('#button-2').attr('setup') == "true") {
+    		now.sendButtonCall(2);
+    	} else {
+    		now.sendButtonSetup(2);
+    		//$('#button-1').attr('setup', true);
+    	}
+    	
+    });
 	
 	now.receiveDrag = function (x,y) {
 
@@ -157,5 +173,14 @@ now.ready(function(){
 	
 	now.receiveDisableCanvas = function () {
 		$('#draw').addClass('disabled');
+	}
+	
+	now.receiveButtonSuccess = function (num) {
+		alert('sucess:'+ num);
+		if (num==1) {
+			$('#button-1').attr('setup', 'true')
+		} else if (num == 2) {
+			$('#button-2').attr('setup', 'true')
+		}
 	}
 });
