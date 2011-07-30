@@ -13,7 +13,7 @@ server.use('/static',express.static(WEBROOT));
 
 //Define route for the homepage
 server.get('/', function (req, response) {
-   fs.readFile(WEBROOT+'index.html', function (err, data) {
+   fs.readFile(WEBROOT+'/index.html', function (err, data) {
         response.writeHead(200, {
             'Content-Type': 'text/html'
         });
