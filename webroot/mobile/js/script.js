@@ -141,17 +141,31 @@ now.ready(function(){
     	if ($('#button-1').attr('setup') == "true") {
     		now.sendButtonCall(1);
     	} else {
+    		$('#button-2').wiggle('stop');
     		now.sendButtonSetup(1);
+    		$('#button-1').wiggle('start');
+    		//$('#button-1-close').show();
     		//$('#button-1').attr('setup', true);
     	}
-    	
+    });
+    
+    new MBP.fastButton(document.getElementById('button-1-close'), function(e) {
+    	if ($('#button-1').attr('setup') == "true") {
+    		now.sendButtonCall(1);
+    	} else {
+    		now.sendButtonSetup(1);
+    		$('#button-1-close').show();
+    		//$('#button-1').attr('setup', true);
+    	}
     });
     
     new MBP.fastButton(document.getElementById('button-2'), function(e) {
     	if ($('#button-2').attr('setup') == "true") {
     		now.sendButtonCall(2);
     	} else {
+    		$('#button-1').wiggle('stop');
     		now.sendButtonSetup(2);
+    		$('#button-1').wiggle('start');
     		//$('#button-1').attr('setup', true);
     	}
     	
@@ -181,8 +195,10 @@ now.ready(function(){
 	now.receiveButtonSuccess = function (num) {
 		if (num==1) {
 			$('#button-1').attr('setup', 'true')
+			$('#button-1').wiggle('stop');
 		} else if (num == 2) {
 			$('#button-2').attr('setup', 'true')
+			$('#button-1').wiggle('stop');
 		}
 	};
 	
