@@ -39,10 +39,28 @@ server.listen(8082);
 
 var everyone = nowjs.initialize(server);
 
+everyone.on('connect', function() {
+    var group = nowjs.getGroup(this.now.cntrlr);
+    group.addUser(client.user.clientId);
+});
+
+everyone.on('disconnect', function() {
+    var group = nowjs.getGroup(this.now.cntrlr);
+	group.removeUser(this.user.clientId);
+});
+
 everyone.now.sendDrag = function (dx, dy) {
-    everyone.now.receiveDrag(dx, dy)
+    nowjs.getGroup(this.now.cntrlr).now.receiveDrag(dx, dy)
 }
 
 everyone.now.sendExtra = function (speedx, speedy) {
-    everyone.now.receiveExtra(speedx, speedy)
+    nowjs.getGroup(this.now.cntrlr).now.receiveExtra(speedx, speedy)
+}
+
+everyone.now.mouseMove = function (dx, dy) {
+    nowjs.getGroup(this.now.cntrlr).now.mouseMove(dx, dy);
+}
+
+everyone.now.mouseClick = function () {
+    nowjs.getGroup(this.now.cntrlr).now.mouseClick();
 }
