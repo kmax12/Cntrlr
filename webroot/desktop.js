@@ -495,7 +495,9 @@
 
 var scroller,oldx,oldy,newx,newy,
 	isDragging = false,
-	cntrlrClickCalled = false;
+	cntrlrClickCalled = false,
+	cntrlrCanvasContext,
+	cntrlrCanvasEnabled = false;
 function cntrlrSimulateEvent(element, type) {
     // Check for createEventObject
     if(document.createEventObject){
@@ -626,23 +628,32 @@ $(function () {
 		}
 
 		now.receiveMouseMove = function (dx, dy) {
+			var cntrlrLeft, cntrlrTop;
 			// console.log(dx + " " + dy);
+			if(cntrlrCanvasEnabled) {
+				cntrlrCanvasContext.moveTo(parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10), parseInt($("#cntrlr-cursor").css('top').replace('px', ''), 10));
+			}
 			if(dx && dy) {
 				$("#cntrlr-cursor").css({ top: (dy < 0 ? "-=" : "+=") + Math.abs(dy) + "px", left: (dx < 0 ? "-=" : "+=") + Math.abs(dx) + "px" });
-				// console.log($("#cntrlr-cursor").css('left') + " " + parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10));
-				// if(parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10) < 10) {
-				// 	$("#cntrlr-cursor").css({ left: 10 });
-				// }
-				// if(parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10) >= ($(window).width() - 10)) {
-				// 	console.log("2");
-				// 	$("#cntrlr-cursor").css({ left: $(window).width() - 10 });
-				// }
-				// if(parseInt($("#cntrlr-cursor").css('top').replace('px', ''), 10) < 10) {
-				// 	$("#cntrlr-cursor").css({ top: 10 });
-				// }
-				// if(parseInt($("#cntrlr-cursor").css('top').replace('px', ''), 10) >= ($(window).height() - 10)) {
-				// 	$("#cntrlr-cursor").css({ top: $(window).height() - 10 });
-				// }
+				cntrlrLeft = parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10);
+				cntrlrTop = parseInt($("#cntrlr-cursor").css('top').replace('px', ''), 10);
+				if(cntrlrLeft < 10) {
+					$("#cntrlr-cursor").css({ left: 10 });
+				}
+				if(cntrlrLeft >= ($(window).width() - 10)) {
+					console.log("2");
+					$("#cntrlr-cursor").css({ left: $(window).width() - 10 });
+				}
+				if(cntrlrTop < 10) {
+					$("#cntrlr-cursor").css({ top: 10 });
+				}
+				if(cntrlrTop >= ($(window).height() - 10)) {
+					$("#cntrlr-cursor").css({ top: $(window).height() - 10 });
+				}
+			}
+			if(cntrlrCanvasEnabled) {
+				cntrlrCanvasContext.lineTo(cntrlrLeft, cntrlrTop);
+				cntrlrCanvasContext.stroke();
 			}
 		}
 
@@ -662,12 +673,23 @@ $(function () {
 				}
 			}
 			cntrlrClickCalled = false;
+		},
+		
+		now.receiveEnableCanvas = function () {
+			$("#cntrlr-canvas").show();
+			cntrlrCanvasEnabled = true;
+		},
+		
+		now.receiveDisableCanvas = function () {
+			$("#cntrlr-canvas").hide();
+			cntrlrCanvasEnabled = false;
 		}
 	});
 	scroller = new Scroller();
 	$("head").append("<link href='http://localhost:8082/static/desktop.css' rel='stylesheet' />");
 	$("body").addClass('cntrlr-enabled');
 	$("body").append('<div id="cntrlr-cursor"></div>');
+	$("body").append('<canvas id="cntrlr-canvas" style="position: fixed; display: none; left: 0; top: 0;"></canvas>');
 	$("body").bind("mousemove", function (event) {
 		$("#cntrlr-cursor").css({ top: (event.clientY) + "px", left: (event.clientX) + "px" });
 	});
@@ -693,6 +715,11 @@ $(function () {
 		}
 		return true;
 	});
+	$("#cntrlr-canvas").attr('width', $(window).width());
+	$("#cntrlr-canvas").attr('height', $(window).height());
+	cntrlrCanvasContext = $("#cntrlr-canvas")[0].getContext('2d');
+	cntrlrCanvasContext.lineWidth = 15;
+	cntrlrCanvasContext.lineCap = "round";
 });
 
 // $(function () {
