@@ -1,4 +1,4 @@
-var oldx,oldy,newx,newy, startx, starty, finalx, finaly, startTime, endTime, sizeFactor
+var oldx,oldy,newx,newy, startx, starty, finalx, finaly, startTime, endTime, sizeFactor, click = false;
 $(window).ready( function () {
 	$('#container').css('width',$(document).width())
 	$('#container').css('height',$(document).height())
@@ -70,14 +70,15 @@ now.ready(function(){
 	};
 	
 	var trackpad = document.getElementById('trackpad');
-  
+  	  	
     trackpad.onmousedown =  trackpad.ontouchstart = function (e) {
+		click = true;
 		if (e.changedTouches) { 	// iPhone
-			oldx = e.changedTouches[0].clientX
-    		oldy = e.changedTouches[0].clientY
+			startx = oldx = e.changedTouches[0].clientX
+    		starty = oldy = e.changedTouches[0].clientY
 		} else { 							// all others
-			oldx = e.clientX
-    		oldy = e.clientY
+			startx = oldx = e.clientX
+    		starty = oldy = e.clientY
 		}
     	e.preventDefault();
 	};
@@ -93,18 +94,30 @@ now.ready(function(){
 		if (oldx && oldy) {
 			dx = newx-oldx;
 			dy = newy-oldy;
-			console.log(newx + ":" + oldx + ':' + dx);	
+			now.sendMouseMove(dx*sizeFactor,dy*sizeFactor);
+			//console.log(newx + ":" + oldx + ':' + dx);	
 		}
+		
+		  if (Math.abs(newx - startx) > 10 ||  Math.abs(newy - starty) > 10) {
+		    click = false;
+		  }
+		
 		 
 		oldx = newx;
 		oldy = newy;
 		
-		
-		now.sendMouseMove(dx*sizeFactor,dy*sizeFactor);
 		e.preventDefault();
 	};
 
     trackpad.onmouseup =  trackpad.ontouchend  = function (e) {
+    	console.log(click)
+    	if (click) {
+	    	trackpad.className = "clicked control-area";
+	    	setTimeout(function(){
+	    		trackpad.className = "control-area";
+	    	}, 250) 
+	    }
+    	now.sendMouseClick();
     	e.preventDefault();
 	};
 	
