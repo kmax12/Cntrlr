@@ -642,6 +642,7 @@ $(function () {
 			var cntrlrLeft, cntrlrTop;
 			// console.log(dx + " " + dy);
 			if(cntrlrCanvasEnabled) {
+				cntrlrCanvasContext.beginPath();
 				cntrlrCanvasContext.moveTo($("#cntrlr-cursor").position().left, $("#cntrlr-cursor").position().top);
 			}
 			if(dx && dy) {
