@@ -63,8 +63,12 @@ now.ready(function(){
     	dtime = finalTime - startTime;
 		speedx = (finalx-startx) / dtime;
 		speedy = (finaly-starty) / dtime;
+		speedy *= sizeFactor;
 		
-    	now.sendExtra(speedx*sizeFactor,speedy*sizeFactor)
+    	now.sendExtra(speedx*sizeFactor,speedy)
+		if(Math.abs(speedy) > 0.6) {
+			$("#vert-scroll").stop().css({ top: "0px" }).animate({ top: (30 * speedy) + "px" }, 150).animate({ top: "0px" }, 150);
+		}
     	e.preventDefault();
 		//alert(user.clientId);
 		//now.sendScrollPosition(window.pageXOffset,window.pageYOffset);

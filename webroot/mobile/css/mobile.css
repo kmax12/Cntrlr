@@ -1,5 +1,6 @@
 ﻿body {
-	overflow:hidden;
+	overflow: hidden;
+	background: #222 url(/static/linen.png);
 }
 
 #container {
@@ -20,25 +21,82 @@
 #trackpad{
 	width: 70%;
 	height: 80%;
-	background: white url(../../../static/mobile/img/bg.jpg) repeat left top;
+/*	background: white url(../../../static/mobile/img/bg.jpg) repeat left top;*/
+	background: #383838;
+	background: url(/static/linen.png), -moz-linear-gradient(top, #383838 0%, #444444 100%);
+	background: url(/static/linen.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#383838), color-stop(100%,#444444));
+	background: url(/static/linen.png), -webkit-linear-gradient(top, #383838 0%,#444444 100%);
+	background: url(/static/linen.png), -o-linear-gradient(top, #383838 0%,#444444 100%);
+	background: url(/static/linen.png), -ms-linear-gradient(top, #383838 0%,#444444 100%);
+	background: url(/static/linen.png), linear-gradient(top, #383838 0%,#444444 100%);
+	-webkit-border-bottom-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	position: relative;
+	top: -5px;
+	border: 1px solid black;
+	-webkit-transition: -webkit-transform .2s ease-in-out;
+	-moz-transition: -moz-transform .2s ease-in-out;
+	-o-transition: -o-transform .2s ease-in-out;
+	transition: transform .2s ease-in-out;
+	z-index: 2001;
+}
 
+#trackpad-inner {
+	width: 70%;
+	height: 80%;
+	background-color: #222;
+	-webkit-border-bottom-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 1px solid black;
+	z-index: 2000;
 }
 
 #trackpad.clicked {	
-	background: url(../../../static/mobile/img/bg-click.png) repeat-x left top, url(../../../static/mobile/img/bg.jpg) repeat left top
+	background-color:#222;
+	top: -4px;
+	-webkit-transform: translate(0, 4px);
+	-moz-transform: translate(0, 4px);
+	-o-transform: translate(0, 4px);
+	transform: translate(0, 4px);
 }
 
 #vert-scroll {
 	width:30%;
 	height:100%;
-	background-color:blue;
+	background: url(/static/gunmetal.png);
 	float:right;
+	position: relative;
+	z-index: 1200;
+	padding: 0;
+/*	top: -300px;*/
 }
 
 #hor-scroll {
 	width:70%;
 	height:20%;
-	background-color:green;
+	background: #2c2c2c;
+	background: url(/static/linen.png), -moz-linear-gradient(top, #2c2c2c 0%, #131313 100%);
+	background: url(/static/linen.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2c2c2c), color-stop(100%,#131313));
+	background: url(/static/linen.png), -webkit-linear-gradient(top, #2c2c2c 0%,#131313 100%);
+	background: url(/static/linen.png), -o-linear-gradient(top, #2c2c2c 0%,#131313 100%);
+	background: url(/static/linen.png), -ms-linear-gradient(top, #2c2c2c 0%,#131313 100%);
+	background: url(/static/linen.png), linear-gradient(top, #2c2c2c 0%,#131313 100%);
+	border-right: 2px solid black;
+	padding-top: 10px;
+	position: relative;
+	top: -10px;
+	z-index: 1000;
 }
 
 .lower-button {
