@@ -8,6 +8,20 @@ $(window).ready( function () {
 		$('#container').css('height',$(document).height())
 		sizeFactor = 942/$(document).height();
 	})
+	
+	new MBP.fastButton(document.getElementById('draw'), function(e) {
+    	if ($('#draw').hasClass('disabled')) {
+    		$('#draw').toggleClass('disabled');
+    		now.sendEnableCanvas()
+    	} else {
+    		$('#draw').toggleClass('disabled');
+    		now.sendDisableCanvas()
+    	}     
+    });
+    
+    new MBP.fastButton(document.getElementById('button-l'), function(e) {
+    	//now.send
+    });
 })
 now.ready(function(){
 	now.cntrlr = 1;
@@ -115,9 +129,10 @@ now.ready(function(){
 	    	trackpad.className = "clicked control-area";
 	    	setTimeout(function(){
 	    		trackpad.className = "control-area";
-	    	}, 250) 
+	    	}, 200)
+	    	now.sendMouseClick(); 
 	    }
-    	now.sendMouseClick();
+    	
     	e.preventDefault();
 	};
 	
@@ -134,6 +149,13 @@ now.ready(function(){
 	}
 	
 	now.receiveMouseClick = function (){
-		
+	}
+	
+	now.receiveEnableCanvas = function () {
+		$('#draw').removeClass('disabled');
+	}
+	
+	now.receiveDisableCanvas = function () {
+		$('#draw').addClass('disabled');
 	}
 });
