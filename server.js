@@ -77,6 +77,7 @@ everyone.now.sendButtonCall = function (n) {
     nowjs.getGroup(this.now.cntrlr).now.receiveButtonCall(n);
 }
 
+
 everyone.now.sendButtonSetup = function (n) {
 	if (n==1) {
 		elem1 = null;
@@ -88,4 +89,12 @@ everyone.now.sendButtonSetup = function (n) {
 
 everyone.now.sendButtonSuccess = function (n) {
     nowjs.getGroup(this.now.cntrlr).now.receiveButtonSuccess(n);
+}
+
+everyone.now.sendMakeTextInput = function (current) {
+	nowjs.getGroup(this.now.cntrlr).now.receiveMakeTextInput(current);
+}
+
+everyone.now.sendTextInput = function (text) {
+	nowjs.getGroup(this.now.cntrlr).now.receiveTextInput(text);
 }

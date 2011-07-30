@@ -120,6 +120,7 @@ now.ready(function(){
 	    	setTimeout(function(){
 	    		trackpad.className = "control-area";
 	    	}, 200)
+	    	click = false;
 	    	now.sendMouseClick(); 
 	    }
     	
@@ -168,8 +169,6 @@ now.ready(function(){
 		
 	}
 	
-	now.receiveMouseClick = function (){
-	}
 	
 	now.receiveEnableCanvas = function () {
 		$('#draw').removeClass('disabled');
@@ -185,5 +184,12 @@ now.ready(function(){
 		} else if (num == 2) {
 			$('#button-2').attr('setup', 'true')
 		}
+	};
+	
+	now.receiveMakeTextInput = function (current) {
+		var text = prompt('Text?',current);
+		now.sendTextInput(text);
 	}
+	
+	
 });

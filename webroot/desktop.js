@@ -501,7 +501,8 @@ var scroller,oldx,oldy,newx,newy,
 	set1 = false,
 	set2 = false,
 	elem1 = null,
-	elem2 = null;
+	elem2 = null,
+	elemInput = null;
 	
 function cntrlrSimulateEvent(element, type) {
     // Check for createEventObject
@@ -698,8 +699,16 @@ $(function () {
 							now.sendButtonSuccess(2);
 						}
 					} else if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
-						$(elem).click();
-						$(elem).focus();
+							//$(elem).click();
+							$(elem).focus();
+							
+							console.log(elemInput);
+							if (!elemInput) {
+								elemInput = elem;
+								console.log('sendmaketextinput')
+								now.sendMakeTextInput($(elemInput).val());	
+							}
+							
 					} else {
 						if(elem.tagName == "INPUT" && (elem.type.toLowerCase() == "checkbox" || elem.type.toLowerCase() == "radio")) {
 							$(elem).click();
@@ -745,6 +754,12 @@ $(function () {
 		
 		now.receiveButtonSuccess = function (num) {
 			console.log('button' + num + "sucess") 
+		}
+		
+		now.receiveTextInput = function (text) {
+			console.log(text);
+			$(elemInput).val(text);
+			elemInput = null;
 		}
 	});
 	scroller = new Scroller();
