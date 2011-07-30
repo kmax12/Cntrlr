@@ -675,6 +675,7 @@ $(function () {
 				cntrlrCanvasContext.strokeStyle = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
 			} else {
 				cntrlrClickCalled = true;
+				$("#cntrlr-cursor").hide();
 				elem = document.elementFromPoint(parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10), parseInt($("#cntrlr-cursor").css('top').replace('px', ''), 10));
 				if(elem != null) {
 					if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
@@ -688,6 +689,7 @@ $(function () {
 						}
 					}
 				}
+				$("#cntrlr-cursor").show();
 				cntrlrClickCalled = false;
 			}
 		}
