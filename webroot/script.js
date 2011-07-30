@@ -16,6 +16,14 @@ now.ready(function(){
 	now.recieveExtra= function (speedx,speedy) {
 		scroller.handleExtra(speedx,speedy);
 	}
+	
+	now.receiveMouseMove = function (dx, dy) {
+		$("#cntrlr-cursor").hide(); $("#cntrlr-cursor").css({ top: (event.clientY < 0 ? "-=" : "+=") + Math+ "px", left: (event.clientX) + "px" });
+	}
+	
+	now.receiveMouseClick = function () {
+		
+	}
 });
 
 

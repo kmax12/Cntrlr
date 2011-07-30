@@ -57,10 +57,10 @@ everyone.now.sendExtra = function (speedx, speedy) {
     nowjs.getGroup(this.now.cntrlr).now.receiveExtra(speedx, speedy)
 }
 
-everyone.now.mouseMove = function (dx, dy) {
-    nowjs.getGroup(this.now.cntrlr).now.mouseMove(dx, dy);
+everyone.now.sendMouseMove = function (dx, dy) {
+    nowjs.getGroup(this.now.cntrlr).now.receiveMouseMove(dx, dy);
 }
 
-everyone.now.mouseClick = function () {
-    nowjs.getGroup(this.now.cntrlr).now.mouseClick();
+everyone.now.sendMouseClick = function () {
+    nowjs.getGroup(this.now.cntrlr).now.receiveMouseClick();
 }
