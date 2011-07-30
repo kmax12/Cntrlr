@@ -642,7 +642,7 @@ $(function () {
 			var cntrlrLeft, cntrlrTop;
 			// console.log(dx + " " + dy);
 			if(cntrlrCanvasEnabled) {
-				cntrlrCanvasContext.moveTo(parseInt($("#cntrlr-cursor").css('left').replace('px', ''), 10), parseInt($("#cntrlr-cursor").css('top').replace('px', ''), 10));
+				cntrlrCanvasContext.moveTo($("#cntrlr-cursor").position().left, $("#cntrlr-cursor").position().top);
 			}
 			if(dx && dy) {
 				$("#cntrlr-cursor").css({ top: (dy < 0 ? "-=" : "+=") + Math.abs(dy) + "px", left: (dx < 0 ? "-=" : "+=") + Math.abs(dx) + "px" });
@@ -663,7 +663,7 @@ $(function () {
 				}
 			}
 			if(cntrlrCanvasEnabled) {
-				cntrlrCanvasContext.lineTo(cntrlrLeft, cntrlrTop);
+				cntrlrCanvasContext.lineTo($("#cntrlr-cursor").position().left, $("#cntrlr-cursor").position().top);
 				cntrlrCanvasContext.stroke();
 			}
 		}
@@ -684,6 +684,9 @@ $(function () {
 				}
 			}
 			cntrlrClickCalled = false;
+			if(cntrlrCanvasEnabled) {
+				cntrlrCanvasContent.strokeStyle = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+			}
 		}
 		
 		now.receiveEnableCanvas = function () {
