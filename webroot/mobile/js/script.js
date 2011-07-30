@@ -10,6 +10,7 @@ $(window).ready( function () {
 	})
 })
 now.ready(function(){
+	now.cntrlr = 1;
 	
     var vert = document.getElementById('vert-scroll');
   
@@ -71,6 +72,13 @@ now.ready(function(){
 	var trackpad = document.getElementById('trackpad');
   
     trackpad.onmousedown =  trackpad.ontouchstart = function (e) {
+		if (e.changedTouches) { 	// iPhone
+			oldx = e.changedTouches[0].clientX
+    		oldy = e.changedTouches[0].clientY
+		} else { 							// all others
+			oldx = e.clientX
+    		oldy = e.clientY
+		}
     	e.preventDefault();
 	};
 	

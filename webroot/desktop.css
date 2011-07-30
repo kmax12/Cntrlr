@@ -1,5 +1,5 @@
 body.cntrlr-enabled {
-/*	cursor: none;*/
+	cursor: none;
 }
 *:hover {
 /*	cursor: none;*/
@@ -15,7 +15,7 @@ body.cntrlr-enabled {
 	width: 20px;
 	height: 20px;
 	background: black;
-	margin-left: 20px;
-	margin-top: 0px;
+	margin-left: -10px;
+	margin-top: -10px;
 	z-index: 100000;
 }

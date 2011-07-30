@@ -41,7 +41,7 @@ var everyone = nowjs.initialize(server);
 
 everyone.on('connect', function() {
     var group = nowjs.getGroup(this.now.cntrlr);
-    group.addUser(client.user.clientId);
+    group.addUser(this.user.clientId);
 });
 
 everyone.on('disconnect', function() {
