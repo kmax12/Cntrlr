@@ -64,3 +64,11 @@ everyone.now.sendMouseMove = function (dx, dy) {
 everyone.now.sendMouseClick = function () {
     nowjs.getGroup(this.now.cntrlr).now.receiveMouseClick();
 }
+
+everyone.now.sendEnableCanvas = function () {
+    nowjs.getGroup(this.now.cntrlr).now.receiveEnableCanvas();
+}
+
+everyone.now.sendDisableCanvas = function () {
+    nowjs.getGroup(this.now.cntrlr).now.receiveDisableCanvas();
+}
