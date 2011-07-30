@@ -1,0 +1,31 @@
+﻿body {
+	overflow:hidden;
+}
+
+#container {
+	overflow:hidden;
+}
+
+.control-area {
+	margin-bottom: 0px;
+	padding:0px;
+}
+
+#trackpad{
+	width: 70%;
+	height: 80%;
+	background-color:red;
+}
+
+#vert-scroll {
+	width:30%;
+	height:100%;
+	background-color:blue;
+	float:right;
+}
+
+#hor-scroll {
+	width:70%;
+	height:20%;
+	background-color:green;
+}

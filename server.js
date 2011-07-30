@@ -23,7 +23,7 @@ server.get('/', function (req, response) {
 });
 //Define route for a mobile
 server.get('/mobile', function (req, response) {
-    fs.readFile(WEBROOT+'mobile.html', function (err, data) {
+    fs.readFile(WEBROOT+'/mobile/index.html', function (err, data) {
         response.writeHead(200, {
             'Content-Type': 'text/html'
         });

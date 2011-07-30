@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<!--[if IEMobile 7 ]>    <html class="no-js iem7" manifest="default.appcache?v=1"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" manifest="default.appcache?v=1"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Cntrlr</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320"/>
+  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-startup-image" href="img/l/splash.png">
+  <meta http-equiv="cleartype" content="on">
+  <link rel="stylesheet" href="../static/mobile/css/style.css?v=1">
+  <link rel="stylesheet" href="../static/mobile/css/mobile.css">	
+  <script src="../static/mobile/js/libs/modernizr-custom.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="vert-scroll" class="control-area"></div>
+    <div id="trackpad" class="control-area"></div>
+    <div id="hor-scroll" class="control-area"></div>
+    
+  </div> <!--! end of #container -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+  
+  <!-- scripts concatenated and minified via ant build script -->
+  <script src="../static/mobile/js/mylibs/helper.js"></script> 	
+  <script type="text/javascript" src="/nowjs/now.js"></script>
+  <script src="../static/mobile/js/script.js"></script>
+  <!-- end concatenated and minified scripts-->
+  
+  <script>
+    MBP.scaleFix();
+    yepnope({
+      test : Modernizr.mq('(min-width)'),
+      nope : ['js/libs/respond.min.js']
+    });
+  </script>
+
+  <!-- <script src="https://getfirebug.com/firebug-lite.js"></script> -->
+  
+  <script>
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+  </script>
+
+</body>
+</html>
