@@ -718,6 +718,10 @@ $(function () {
 					}
 				}
 				$("#cntrlr-cursor").show();
+				if ($("#cntrlr-cursor").hasClass('click')) {
+					$("#cntrlr-cursor").toggleClass('click');
+				}
+				$("#cntrlr-cursor").toggleClass('click');
 				cntrlrClickCalled = false;
 			}
 		}
@@ -754,6 +758,15 @@ $(function () {
 		
 		now.receiveButtonSuccess = function (num) {
 			console.log('button' + num + "sucess") 
+		}
+		
+		now.receiveButtonFailure = function (num) {
+			if (num ==1) {
+				set1 = false;
+			} else if (num == 2) {
+				set2 = false;
+			}
+			console.log('button' + num + "fail") 
 		}
 		
 		now.receiveTextInput = function (text) {

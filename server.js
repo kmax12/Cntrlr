@@ -91,6 +91,10 @@ everyone.now.sendButtonSuccess = function (n) {
     nowjs.getGroup(this.now.cntrlr).now.receiveButtonSuccess(n);
 }
 
+everyone.now.sendButtonFailure = function (n) {
+    nowjs.getGroup(this.now.cntrlr).now.receiveButtonFailure(n);
+}
+
 everyone.now.sendMakeTextInput = function (current) {
 	nowjs.getGroup(this.now.cntrlr).now.receiveMakeTextInput(current);
 }
