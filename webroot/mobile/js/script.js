@@ -176,7 +176,6 @@ now.ready(function(){
 	}
 	
 	now.receiveButtonSuccess = function (num) {
-		alert('sucess:'+ num);
 		if (num==1) {
 			$('#button-1').attr('setup', 'true')
 		} else if (num == 2) {
