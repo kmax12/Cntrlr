@@ -8,12 +8,11 @@ $(window).ready(function(){
 })
 
 now.ready(function(){
-	now.recieveDrag = function (dx,dy) {
-		console.log(dx + ':' + dy);
+	now.receiveDrag = function (dx,dy) {
 		scroller.handleInput(dx,dy);
 	}
 	
-	now.recieveExtra= function (speedx,speedy) {
+	now.receiveExtra= function (speedx,speedy) {
 		scroller.handleExtra(speedx,speedy);
 	}
 	
