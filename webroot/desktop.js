@@ -671,12 +671,11 @@ $(function () {
 		now.receiveMouseClick = function () {
 			cntrlrClickCalled = true;
 			elem = document.elementFromPoint($("#cntrlr-cursor").position().left, $("#cntrlr-cursor").position().top);
-			if(elem != null)
+			if(elem != null) {
 				if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
 					$(elem).click();
 					$(elem).focus();
 				} else {
-					console.log(event);
 					if(elem.tagName == "INPUT" && (elem.type.toLowerCase() == "checkbox" || elem.type.toLowerCase() == "radio")) {
 						$(elem).click();
 					} else {
@@ -685,12 +684,12 @@ $(function () {
 				}
 			}
 			cntrlrClickCalled = false;
-		},
+		}
 		
 		now.receiveEnableCanvas = function () {
 			$("#cntrlr-canvas").show();
 			cntrlrCanvasEnabled = true;
-		},
+		}
 		
 		now.receiveDisableCanvas = function () {
 			$("#cntrlr-canvas").hide();
@@ -701,7 +700,7 @@ $(function () {
 	$("head").append("<link href='http://localhost:8082/static/desktop.css' rel='stylesheet' />");
 	$("body").addClass('cntrlr-enabled');
 	$("body").append('<div id="cntrlr-cursor"></div>');
-	$("body").append('<canvas id="cntrlr-canvas" style="position: fixed; display: none; left: 0; top: 0;"></canvas>');
+	$("body").append('<canvas id="cntrlr-canvas" style="position: absolute; display: none; left: 0; top: 0;"></canvas>');
 	$("body").bind("mousemove", function (event) {
 		$("#cntrlr-cursor").css({ top: (event.clientY) + "px", left: (event.clientX) + "px" });
 	});
@@ -727,8 +726,8 @@ $(function () {
 		}
 		return true;
 	});
-	$("#cntrlr-canvas").attr('width', $(window).width());
-	$("#cntrlr-canvas").attr('height', $(window).height());
+	$("#cntrlr-canvas").attr('width', $(document).width());
+	$("#cntrlr-canvas").attr('height', $(document).height());
 	cntrlrCanvasContext = $("#cntrlr-canvas")[0].getContext('2d');
 	cntrlrCanvasContext.lineWidth = 15;
 	cntrlrCanvasContext.lineCap = "round";
