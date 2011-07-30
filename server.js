@@ -32,6 +32,17 @@ server.get('/mobile', function (req, response) {
     });
 });
 
+//Define route for a home
+server.get('/home', function (req, response) {
+    fs.readFile(WEBROOT+'/home/index.html', function (err, data) {
+        response.writeHead(200, {
+            'Content-Type': 'text/html'
+        });
+        response.write(data);
+        response.end();
+    });
+});
+
 server.get('/s/*', function (req, res) {
   
 });
