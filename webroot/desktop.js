@@ -517,6 +517,17 @@ function cntrlrSimulateEvent(element, type) {
     }
 }
 
+function cntrlrRandomString() {
+	var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+	var string_length = 20;
+	var randomstring = '';
+	for (var i=0; i<string_length; i++) {
+		var rnum = Math.floor(Math.random() * chars.length);
+		randomstring += chars.substring(rnum,rnum+1);
+	}
+	return randomstring;
+}
+
 /**
  * @author max kanter
  */
@@ -660,16 +671,17 @@ $(function () {
 		now.receiveMouseClick = function () {
 			cntrlrClickCalled = true;
 			elem = document.elementFromPoint($("#cntrlr-cursor").position().left, $("#cntrlr-cursor").position().top);
-			console.log(elem);
-			if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
-				$(elem).click();
-				$(elem).focus();
-			} else {
-				console.log(event);
-				if(elem.tagName == "INPUT" && (elem.type.toLowerCase() == "checkbox" || elem.type.toLowerCase() == "radio")) {
+			if(elem != null)
+				if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
 					$(elem).click();
+					$(elem).focus();
 				} else {
-					cntrlrSimulateEvent(elem, 'click');
+					console.log(event);
+					if(elem.tagName == "INPUT" && (elem.type.toLowerCase() == "checkbox" || elem.type.toLowerCase() == "radio")) {
+						$(elem).click();
+					} else {
+						cntrlrSimulateEvent(elem, 'click');
+					}
 				}
 			}
 			cntrlrClickCalled = false;
