@@ -698,7 +698,7 @@ $(function () {
 							console.log(elem2)
 							now.sendButtonSuccess(2);
 						}
-					} else if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio") || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
+					} else if((elem.tagName == "INPUT" && elem.type.toLowerCase() != "submit" && elem.type.toLowerCase() != "checkbox" && elem.type.toLowerCase() != "radio" && elem.type.toLowerCase() != 'image') || elem.tagName == "TEXTAREA" || elem.tagName == "SELECT") {
 							//$(elem).click();
 							$(elem).focus();
 							
