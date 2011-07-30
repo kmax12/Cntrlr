@@ -105,14 +105,28 @@
 	width: 25%;
 	float: left;
 	margin: 4% 4%;
-	height: 74%;
+	padding-top: 4%;
+	height: 34%;
 	background: rgb(149,149,149); /* Old browsers */
+	font-size: 20px;
+	text-align: center;
+	background: #111;
+	color: #fff;
+}
+
+.lower-button:active, .lower-button.editing {
+	background: #444;
+}
+
+.lower-button.disabled {
+	background: #cacaca;
+	color: black;
 }
 
 #draw {
 	
 }
 
-#draw.disabled {
+/*#draw.disabled {
 	background-color: red !important;
-}
+}*/
