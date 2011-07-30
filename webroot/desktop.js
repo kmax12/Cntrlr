@@ -774,6 +774,10 @@ $(function () {
 			$(elemInput).val(text);
 			elemInput = null;
 		}
+		
+		now.receiveUrl = function (url) {
+			window.location = url;
+		}
 	});
 	scroller = new Scroller();
 	$("head").append("<link href='http://localhost:8082/static/desktop.css' rel='stylesheet' />");

@@ -102,3 +102,7 @@ everyone.now.sendMakeTextInput = function (current) {
 everyone.now.sendTextInput = function (text) {
 	nowjs.getGroup(this.now.cntrlr).now.receiveTextInput(text);
 }
+
+everyone.now.sendUrl= function (url) {
+	nowjs.getGroup(this.now.cntrlr).now.receiveUrl(url);
+}

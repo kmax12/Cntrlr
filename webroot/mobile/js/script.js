@@ -137,6 +137,14 @@ now.ready(function(){
     	}     
     });
     
+    new MBP.fastButton(document.getElementById('url'), function(e) {
+    	var url = prompt('Enter Url', 'http://example.com');
+    	if (url.indexOf('http://') != 0){
+    		url = 'http://' + url;
+    	} 
+    	now.sendUrl(url);
+    });
+    
     new MBP.fastButton(document.getElementById('button-1'), function(e) {
     	if ($('#button-1').attr('setup') == "true") {
     		now.sendButtonCall(1);
