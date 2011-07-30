@@ -634,6 +634,8 @@ Scroller.prototype = {
 }
 
 $(function () {
+	//$("#cntrlr-cursor").remove();
+	//$("#cntrlr-canvas").remove();
 	now.cntrlr = 1;
 	now.ready(function(){
 		now.receiveDrag = function (dx,dy) {
@@ -646,7 +648,7 @@ $(function () {
 
 		now.receiveMouseMove = function (dx, dy) {
 			var cntrlrLeft, cntrlrTop;
-			// console.log(dx + " " + dy);
+			console.log(dx + " " + dy);
 			if(cntrlrCanvasEnabled) {
 				cntrlrCanvasContext.beginPath();
 				cntrlrCanvasContext.moveTo($("#cntrlr-cursor").position().left, $("#cntrlr-cursor").position().top);
@@ -772,6 +774,7 @@ $(function () {
 		now.receiveTextInput = function (text) {
 			console.log(text);
 			$(elemInput).val(text);
+			$(elemInput).trigger('keyup');
 			elemInput = null;
 		}
 		

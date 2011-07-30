@@ -1,0 +1,12 @@
+{
+  "name": "cntrlr",
+  "version": "1.0",
+  "description": "",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "background_page": "background.html",
+  "permissions": [
+    "tabs", "http://*/*"
+  ]
+}

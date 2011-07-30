@@ -45,8 +45,8 @@ everyone.on('connect', function() {
 });
 
 everyone.on('disconnect', function() {
-    var group = nowjs.getGroup(this.now.cntrlr);
-	group.removeUser(this.user.clientId);
+    // var group = nowjs.getGroup(this.now.cntrlr);
+	// group.removeUser(this.user.clientId);
 });
 
 everyone.now.sendDrag = function (dx, dy) {
