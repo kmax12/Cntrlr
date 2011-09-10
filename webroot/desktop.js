@@ -141,8 +141,8 @@ Scroller.prototype = {
 }
 
 $(function () {
-	//$("#cntrlr-cursor").remove();
-	//$("#cntrlr-canvas").remove();
+	$("#cntrlr-cursor").remove();
+	$("#cntrlr-canvas").remove();
 	now.cntrlr = 1;
 	now.ready(function(){
 		now.receiveDrag = function (dx,dy) {

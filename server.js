@@ -13,7 +13,7 @@ server.use('/static',express.static(WEBROOT));
 
 //Define route for the homepage
 server.get('/', function (req, response) {
-   fs.readFile(WEBROOT+'/index.html', function (err, data) {
+   fs.readFile(WEBROOT+'/home/index.html', function (err, data) {
         response.writeHead(200, {
             'Content-Type': 'text/html'
         });
@@ -46,7 +46,8 @@ server.get('/home', function (req, response) {
 server.get('/s/*', function (req, res) {
   
 });
-server.listen(8082);
+var port = process.env.PORT || 8082;
+server.listen(port);
 
 var everyone = nowjs.initialize(server);
 

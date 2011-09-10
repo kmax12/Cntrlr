@@ -1,0 +1,16 @@
+{
+  "name": "Cntrlr",
+  "description": "Control your browser using a mobile device",
+  "version": "0.1.0",
+  "homepage": "https://github.com/kmax12/Cntrlr",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kmax12/Cntrlr.git"
+  },
+  "author": "Alex Coomans & Max Kanter",
+  "dependencies": {
+    "now": ">= 0.7.4",
+    "express":">=2.4.3",
+    "redis":">=0.6.6"
+  }
+}
